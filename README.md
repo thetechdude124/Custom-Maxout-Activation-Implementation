@@ -1,7 +1,9 @@
 
 ### 📈REPLICATING AND TESTING CUSTOM MAXOUT NETWORKS.
 
-Hey there! This notebook is meant to compare the performance of two MLP models with different activation functions on the MNIST dataset. 
+**Purpose: Implementing a custom Maxout network from scratch (implementing the activation function as an extention of nn.Module in Pytorch) and testing model performance on MNIST in comparison to ReLU networks.**
+
+Hey there! This project is meant to compare the performance of two MLP models with different activation functions on the MNIST dataset. 
 The first of these uses the typical ReLU activation, while the second uses **a custom maxout activation function** (replicating the original 2013 paper https://arxiv.org/abs/1302.4389) as defined in **Maxout.py**.
 
 The objective of this experiment is to see whether the theoretical benefits of Maxout work in real-world use cases. As outlined in the above paper, Maxout can (arbitrarily) approximate any continuous function as it acts much like a piecewise linear approximator - this is promising, as it means that both the ReLU and Leaky ReLU activation functions are both special cases of Maxout. Logically, this should mean that maxout can learn more complex functions and thus be able to better model an existing relationship.
