@@ -1,7 +1,7 @@
 
 ### 📈REPLICATING AND TESTING CUSTOM MAXOUT NETWORKS.
 
-**Purpose: Implementing a custom Maxout network from scratch (as an extention of nn.Module in Pytorch) and testing model performance on MNIST in comparison to ReLU networks to determine whether Maxout's more complex function approximations can provide higher accuracies in real-world use cases.**
+**Purpose: Implementing a custom Maxout network from scratch (as an extension of nn.Module in Pytorch) and testing model performance on MNIST in comparison to ReLU networks to determine whether Maxout's more complex function approximations can provide higher accuracies in real-world use cases.**
 
 Hey there! This project is meant to compare the performance of two MLP models with different activation functions on the MNIST dataset. 
 The first of these uses the typical ReLU activation, while the second uses **a custom maxout activation function** (replicating the original 2013 paper https://arxiv.org/abs/1302.4389) as defined in **Maxout.py**.
