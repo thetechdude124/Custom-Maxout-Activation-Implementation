@@ -36,10 +36,7 @@ class CustomMaxout(nn.Module):
         #Add an extra dimension at -3 -> maxpool accepts 3+ dimensions only. Do not unsqeueeze simply at one, as higher order tensors simply don't work (first dimension for 3+ degree tensors are not the 3rd dimension) 
         self.forward_tensor = torch.nn.functional.max_pool1d(torch.unsqueeze(self.forward_tensor, -3), kernel_size = self.n_channels)
         #Once pooling has been done, squeeze the tensor once again to get rid of the extra dimsension
-        self.forward_tensor = torch.squeeze(self.forward_tensor)
-
-        # print("INPUT MATRIX: ", x)
-        # print("OUTPUT MATRIX: ", self.forward_tensor)        
+        self.forward_tensor = torch.squeeze(self.forward_tensor)   
         return self.forward_tensor
 
     #For initializing weights on startup. This is INCREDIBLY CRITICAL - if we simply initialize weights randomly, exploding and diminishing gradients (perhaps more of the former) will occur frequently
@@ -52,18 +49,6 @@ class CustomMaxout(nn.Module):
         nn.init.uniform_(self.weights, min, max)
         #Initialize bias uniformly if present
         if (self.is_bias): nn.init.uniform_(self.bias, min, max)
-
-    #For debugging
-    def checkShapes(self, forward_debug = False):
-        #Check whether initialization has been done correctly (weights shape is the same as the end shape)
-        if not forward_debug: 
-            weights_shape = self.weights.shape
-            print(self.weights.shape)
-            tensor_shape = torch.Tensor(self.n_channels * self.k_output_groups, self.j_inputs).shape
-            assert weights_shape == tensor_shape, "Weights {} are an incompatible compared to input shape {}".format(weights_shape, tensor_shape)
-        else:
-            forward_tensor_shape = self.forward_tensor[0].shape
-            assert forward_tensor_shape == self.k_output_groups, "Transformation sizes are incompatible - given {}, found {}".format(self.k_output_groups, forward_tensor_shape)
 
 #Test function by passing in a sample input
 def sampleRun(mat_size, inputs, outputs, channels, bias):
