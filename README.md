@@ -36,7 +36,7 @@ All in all, this means that the shown maxout network **can map any input/output 
 
 ### **📝Methodology + This Notebook.**
 
-Three models will be trained on Handwritten digit classification via MNIST (344k samples) - ReLU, Maxout with Bias, Maxout without Bias, and Maxout **with Dropout** (more on this in the next section).
+Four models will be trained on Handwritten digit classification via MNIST (344k samples) - ReLU, Maxout with Bias, Maxout without Bias, and Maxout **with Dropout** (more on this in the next section).
 
 The ReLU model will be trained via FastAI, whereas the Maxout models will use FastAI *DataLoaders* and *Learners* but PyTorch for the training loop (as the activation function has been implemented separately). In the end, **all models are tested on the same 8 000 samples** and accuracy + confusion matrices are reported.
 
